@@ -60,25 +60,17 @@
     </div>
   </section>
 
-  <!-- VIEWER -->
+  <!-- VIEWER DESKTOP -->
   <section id="viewerView" class="view">
     <div class="viewer-shell">
       <header class="viewer-header">
         <div class="viewer-left">
           <button id="backButton" class="top-btn" type="button">← Back to menu</button>
-          <h2 id="viewerTitle">Viewer</h2>
         </div>
 
-        <div class="viewer-right">
-          <a
-            id="openExternal"
-            class="top-btn primary hidden-link"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer">
-            Open externally
-          </a>
+        <h2 id="viewerTitle">Viewer</h2>
 
+        <div class="viewer-right">
           <img src="FIAP_Logo.png" alt="FIAP Logo" class="fiap-logo">
         </div>
       </header>
@@ -92,10 +84,7 @@
         <div id="iframeNotice" class="iframe-notice hidden">
           <div class="notice-box">
             <h3>Embedded view unavailable</h3>
-            <p>
-              Synology may block loading inside this page.
-              Please use the external button below.
-            </p>
+            <p>This archive cannot be displayed inside this page.</p>
             <a
               id="openExternalNotice"
               class="top-btn primary"
@@ -108,6 +97,38 @@
         </div>
 
         <iframe id="viewerFrame" title="FIAP Viewer"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILE VIEW -->
+  <section id="mobileView" class="view">
+    <div class="mobile-shell">
+      <header class="viewer-header mobile-header">
+        <div class="viewer-right mobile-logo-top">
+          <img src="FIAP_Logo.png" alt="FIAP Logo" class="fiap-logo mobile-fiap-logo">
+        </div>
+
+        <div class="viewer-left mobile-header-stack">
+          <button id="mobileBackButton" class="top-btn" type="button">← Back to menu</button>
+          <h2 id="mobileViewerTitle">Viewer</h2>
+        </div>
+      </header>
+
+      <div class="mobile-content">
+        <div class="mobile-card">
+          <p class="mobile-text">
+            This archive opens externally on mobile devices for better compatibility.
+          </p>
+          <a
+            id="mobileOpenExternal"
+            class="top-btn primary mobile-open-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open archive
+          </a>
+        </div>
       </div>
     </div>
   </section>

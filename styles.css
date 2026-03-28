@@ -319,3 +319,7 @@ body > * {
   font-size: 11px;
   color: white;
 }
+
+.viewer-content {
+  padding-bottom: 25px;
+}

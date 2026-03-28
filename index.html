@@ -6,31 +6,105 @@
   <title>FIAP Cloud Collections Service</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<section id="homeView" class="view active">
-  <div class="container">
-    <header class="hero">
-      <h1>FIAP</h1>
-      <p>The International Federation of Photographic Art</p>
-    </header>
+  <!-- HOME -->
+  <section id="homeView" class="view active">
+    <div class="container">
+      <header class="hero">
+        <h1>FIAP</h1>
+        <p>The International Federation of Photographic Art</p>
+      </header>
 
-    <main class="grid">
-      <button class="card" data-title="PFIAP" data-url="https://fiapnas.quickconnect.to/d/s/17Mcit12P6iqBfOBLh99WetIhDxhgzNj/KJ3xZYfwgBBQaHG1ltzq9NlA4uSdtDK8-urRAXc_-Bw0">
-        <h2>PFIAP</h2>
-        <p>FIAP Portfolio</p>
-      </button>
+      <main class="grid">
+        <button
+          class="card"
+          data-title="PFIAP"
+          data-url="https://fiapnas.quickconnect.to/d/s/17Mcit12P6iqBfOBLh99WetIhDxhgzNj/KJ3xZYfwgBBQaHG1ltzq9NlA4uSdtDK8-urRAXc_-Bw0">
+          <h2>PFIAP</h2>
+          <p>FIAP Portfolio</p>
+        </button>
 
-      <button class="card" data-title="MFIAP" data-url="https://fiapnas.quickconnect.to/d/s/17Z9eEGu1Ka0PEBG6yRLJdtAqjiGzIoO/40B0qEW8vFrcBGUnErltRAxOVJYyXJXz-D7ygXjC4EQ0">
-        <h2>MFIAP</h2>
-        <p>Master FIAP</p>
-      </button>
-    </main>
-  </div>
-</section>
+        <button
+          class="card"
+          data-title="MFIAP"
+          data-url="https://fiapnas.quickconnect.to/d/s/17Z9eEGu1Ka0PEBG6yRLJdtAqjiGzIoO/40B0qEW8vFrcBGUnErltRAxOVJYyXJXz-D7ygXjC4EQ0">
+          <h2>MFIAP</h2>
+          <p>Master FIAP</p>
+        </button>
 
-<script src="script.js"></script>
+        <button
+          class="card"
+          data-title="FIAP Distinctions"
+          data-url="#">
+          <h2>FIAP Distinctions</h2>
+          <p>NFIAP AFIAP EFIAP</p>
+        </button>
 
+        <button
+          class="card"
+          data-title="FIAP Biennials"
+          data-url="https://fiapnas.quickconnect.to/d/s/17ZBobEHlBeALmacqmc10EG4LdFqJ8v5/lqNYD-IFbn_ew3pvsyMHk7YkgXQ_-9Ov-br3AWgu-EQ0">
+          <h2>FIAP Biennials</h2>
+          <p>Biennials</p>
+        </button>
+
+        <button
+          class="card"
+          data-title="FIAP World Cup"
+          data-url="https://fiapnas.quickconnect.to/d/s/17ZBx755GbgCrGob2A0CorJvVhvHvIFgA/lHcAxC_4EAg0v9QWSMvbNl5WkAnvgTEU-sbJgVk--EQ0">
+          <h2>FIAP World Cup</h2>
+          <p>for Clubs</p>
+        </button>
+      </main>
+    </div>
+  </section>
+
+  <!-- VIEWER -->
+  <section id="viewerView" class="view">
+    <div class="viewer-shell">
+      <header class="viewer-header">
+        <div class="viewer-left">
+          <button id="backButton" class="top-btn" type="button">← Back to menu</button>
+          <h2 id="viewerTitle">Viewer</h2>
+        </div>
+
+        <div class="viewer-right">
+          <a
+            id="openExternal"
+            class="top-btn primary"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open externally
+          </a>
+        </div>
+      </header>
+
+      <div class="viewer-content">
+        <div id="iframeNotice" class="iframe-notice hidden">
+          <div class="notice-box">
+            <h3>Embedded view unavailable</h3>
+            <p>
+              Synology may block loading inside this page.
+              Please use the external button below.
+            </p>
+            <a
+              id="openExternalNotice"
+              class="top-btn primary"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open externally
+            </a>
+          </div>
+        </div>
+
+        <iframe id="viewerFrame" title="FIAP Viewer"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

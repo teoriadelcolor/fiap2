@@ -36,11 +36,12 @@ body > * {
 
 .view {
   display: none;
-  min-height: 100vh;
+  flex: 1;
 }
 
 .view.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {

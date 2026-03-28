@@ -69,21 +69,26 @@
           <h2 id="viewerTitle">Viewer</h2>
         </div>
 
- <div class="viewer-right">
-  <a
-    id="openExternal"
-    class="top-btn primary hidden-link"
-    href="#"
-    target="_blank"
-    rel="noopener noreferrer">
-    Open externally
-  </a>
-        
-  <img src="FIAP_Logo.png" alt="FIAP Logo" class="fiap-logo">
-</div>
+        <div class="viewer-right">
+          <a
+            id="openExternal"
+            class="top-btn primary hidden-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open externally
+          </a>
+
+          <img src="FIAP_Logo.png" alt="FIAP Logo" class="fiap-logo">
+        </div>
       </header>
 
       <div class="viewer-content">
+        <div id="loadingOverlay" class="loading-overlay hidden">
+          <div class="spinner"></div>
+          <p>Loading archive…</p>
+        </div>
+
         <div id="iframeNotice" class="iframe-notice hidden">
           <div class="notice-box">
             <h3>Embedded view unavailable</h3>
@@ -107,12 +112,10 @@
     </div>
   </section>
 
+  <footer class="footer">
+    FIAP All right reserved 2026
+  </footer>
+
   <script src="script.js"></script>
-
-<footer class="footer">
-  FIAP All right reserved 2026
-</footer>
-
-  
 </body>
 </html>

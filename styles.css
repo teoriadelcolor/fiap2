@@ -34,7 +34,7 @@ body > * {
   z-index: 1;
 }
 
-/* vistas */
+/* Views */
 .view {
   display: none;
   opacity: 0;
@@ -46,15 +46,15 @@ body > * {
   opacity: 1;
 }
 
-/* solo el viewer usa flex para empujar el footer */
-#viewerView.active {
+#viewerView.active,
+#mobileView.active {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
 
-/* home */
+/* Home */
 .container {
   max-width: 1100px;
   width: 100%;
@@ -122,14 +122,7 @@ body > * {
   font-size: 16px;
 }
 
-/* viewer */
-.viewer-shell {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
+/* Shared header */
 .viewer-header {
   position: relative;
   display: flex;
@@ -180,13 +173,21 @@ body > * {
   color: white;
 }
 
+.fiap-logo {
+  height: 45px;
+  width: auto;
+}
+
 .hidden-link {
   display: none;
 }
 
-.fiap-logo {
-  height: 45px;
-  width: auto;
+/* Desktop viewer */
+.viewer-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 #viewerTitle {
@@ -218,7 +219,67 @@ body > * {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* loader */
+/* Mobile external view */
+.mobile-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.mobile-header {
+  justify-content: center;
+}
+
+.mobile-logo-top {
+  justify-content: center;
+}
+
+.mobile-header-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#mobileViewerTitle {
+  margin: 0;
+  color: #1d4ed8;
+  text-align: center;
+  font-size: 18px;
+}
+
+.mobile-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.mobile-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.mobile-text {
+  margin: 0 0 18px;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.mobile-open-btn {
+  min-width: 180px;
+}
+
+/* Loader */
 .loading-overlay {
   position: absolute;
   inset: 16px;
@@ -259,7 +320,7 @@ body > * {
   }
 }
 
-/* iframe notice */
+/* Notice */
 .iframe-notice {
   position: absolute;
   inset: 16px;
@@ -293,7 +354,7 @@ body > * {
   margin-bottom: 18px;
 }
 
-/* footer */
+/* Footer */
 .footer {
   width: 100%;
   height: 20px;
@@ -306,7 +367,7 @@ body > * {
   margin-top: auto;
 }
 
-/* móvil */
+/* Responsive */
 @media (max-width: 700px) {
   .hero h1 {
     font-size: 28px;
@@ -316,6 +377,12 @@ body > * {
   .hero p {
     font-size: 14px;
     white-space: nowrap;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .viewer-header {
@@ -336,16 +403,10 @@ body > * {
     gap: 8px;
   }
 
-  #backButton {
-    order: 1;
-  }
-
   #viewerTitle {
-    order: 2;
     position: static;
     transform: none;
     font-size: 18px;
-    text-align: center;
     white-space: normal;
   }
 
@@ -353,7 +414,8 @@ body > * {
     height: 28px;
   }
 
-  .viewer-content {
+  .viewer-content,
+  .mobile-content {
     padding: 8px;
   }
 }

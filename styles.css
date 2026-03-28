@@ -37,13 +37,16 @@ body > * {
 /* vistas */
 .view {
   display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .view.active {
   display: block;
+  opacity: 1;
 }
 
-/* solo el viewer usa flex para empujar el footer abajo */
+/* solo el viewer usa flex para empujar el footer */
 #viewerView.active {
   display: flex;
   flex-direction: column;
@@ -119,6 +122,13 @@ body > * {
   font-size: 16px;
 }
 
+/* viewer */
+.viewer-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
 
 .viewer-header {
   position: relative;
@@ -137,12 +147,6 @@ body > * {
   align-items: center;
   gap: 16px;
   min-width: 0;
-}
-
-.viewer-left h2 {
-  margin: 0;
-  font-size: 22px;
-  color: #111827;
 }
 
 .viewer-right {
@@ -176,7 +180,6 @@ body > * {
   color: white;
 }
 
-/* ocultamos el botón externo que mantienes en HTML */
 .hidden-link {
   display: none;
 }
@@ -186,7 +189,6 @@ body > * {
   width: auto;
 }
 
-/* título centrado real */
 #viewerTitle {
   position: absolute;
   left: 50%;
@@ -195,9 +197,69 @@ body > * {
   text-align: center;
   margin: 0;
   white-space: nowrap;
+  font-size: 22px;
 }
 
+.viewer-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: 16px;
+  display: flex;
+}
 
+#viewerFrame {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* loader */
+.loading-overlay {
+  position: absolute;
+  inset: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  z-index: 4;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(29, 78, 216, 0.2);
+  border-top-color: #1d4ed8;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-overlay p {
+  margin: 0;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* iframe notice */
 .iframe-notice {
   position: absolute;
   inset: 16px;
@@ -206,7 +268,7 @@ body > * {
   justify-content: center;
   background: rgba(15, 23, 42, 0.35);
   border-radius: 16px;
-  z-index: 3;
+  z-index: 5;
 }
 
 .iframe-notice.hidden {
@@ -282,7 +344,7 @@ body > * {
     order: 2;
     position: static;
     transform: none;
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
     white-space: normal;
   }
@@ -290,34 +352,8 @@ body > * {
   .fiap-logo {
     height: 28px;
   }
-}
 
-/* ===== FIX FRAME ALTURA ===== */
-
-#viewerView.active {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-}
-
-.viewer-shell {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.viewer-content {
-  flex: 1;
-  display: flex;
-  min-height: 0;
-  padding: 16px;
-}
-
-#viewerFrame {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  border: 0;
+  .viewer-content {
+    padding: 8px;
+  }
 }

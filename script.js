@@ -71,8 +71,13 @@ cards.forEach((card) => {
     }
 
     if (isMobileDevice()) {
-      return;
-    }
+  event.preventDefault();
+
+  // 🔥 Fuerza abrir en la MISMA pestaña
+  window.location.href = url;
+
+  return;
+}
 
     event.preventDefault();
     showDesktopViewer(title, url);

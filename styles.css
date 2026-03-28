@@ -119,13 +119,6 @@ body > * {
   font-size: 16px;
 }
 
-/* viewer */
-.viewer-shell {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
 
 .viewer-header {
   position: relative;
@@ -204,21 +197,6 @@ body > * {
   white-space: nowrap;
 }
 
-.viewer-content {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  padding: 16px;
-}
-
-#viewerFrame {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
 
 .iframe-notice {
   position: absolute;
@@ -312,4 +290,34 @@ body > * {
   .fiap-logo {
     height: 28px;
   }
+}
+
+/* ===== FIX FRAME ALTURA ===== */
+
+#viewerView.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.viewer-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.viewer-content {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  padding: 16px;
+}
+
+#viewerFrame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
 }

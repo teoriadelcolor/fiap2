@@ -227,25 +227,59 @@ body > * {
     white-space: nowrap;
   }
 
+  /* 🔧 HEADER EN MÓVIL (orden vertical limpio) */
   .viewer-header {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .viewer-right {
+    order: 1; /* logo arriba */
   }
 
   .viewer-left {
+    order: 2;
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 8px;
   }
 
-  .viewer-left h2 {
+  #backButton {
+    order: 1;
+  }
+
+  #viewerTitle {
+    order: 2;
     font-size: 18px;
     text-align: center;
+    position: static;   /* importante */
+    transform: none;    /* importante */
+  }
+
+  /* tamaño del logo en móvil */
+  .fiap-logo {
+    height: 28px;
   }
 
   #viewerFrame {
-    height: calc(100vh - 160px);
+    height: calc(100vh - 180px);
   }
 }
+
+/* ocultar botón externo (si lo mantienes en HTML) */
+.hidden-link {
+  display: none;
+}
+
+/* tamaño logo escritorio */
+.fiap-logo {
+  height: 12px;
+  width: auto;
+}
+
 /* 👇 AÑADE ESTO AQUÍ (fuera del bloque) */
 .hidden-link {
   display: none;

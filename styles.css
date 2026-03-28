@@ -246,3 +246,7 @@ body > * {
     height: calc(100vh - 160px);
   }
 }
+/* 👇 AÑADE ESTO AQUÍ (fuera del bloque) */
+.hidden-link {
+  display: none;
+}

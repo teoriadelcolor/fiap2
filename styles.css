@@ -304,13 +304,9 @@ body > * {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-
-  height: 20px; /* ligeramente más de 15px para que se lea bien */
-  background-color: #1d4ed8; /* azul FIAP */
+  height: 20px;
+  background-color: #1d4ed8;
 
   display: flex;
   align-items: center;
@@ -318,6 +314,8 @@ body > * {
 
   font-size: 11px;
   color: white;
+
+  margin-top: auto; /* 👈 CLAVE */
 }
 
 .viewer-content {

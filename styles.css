@@ -34,24 +34,27 @@ body > * {
   z-index: 1;
 }
 
+/* vistas */
 .view {
   display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+/* solo el viewer usa flex para empujar el footer abajo */
+#viewerView.active {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-height: 0;
 }
 
-.view.active {
-  display: flex;
-  flex-direction: column;
-}
-
-#viewerView.active {
-  display: flex;
-  flex-direction: column;
-}
-
+/* home */
 .container {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
   text-align: center;
@@ -80,6 +83,7 @@ body > * {
   grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
   justify-content: center;
   gap: 20px;
+  width: 100%;
 }
 
 .card {
@@ -115,6 +119,7 @@ body > * {
   font-size: 16px;
 }
 
+/* viewer */
 .viewer-shell {
   flex: 1;
   display: flex;
@@ -123,6 +128,7 @@ body > * {
 }
 
 .viewer-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -177,15 +183,36 @@ body > * {
   color: white;
 }
 
+/* ocultamos el botón externo que mantienes en HTML */
+.hidden-link {
+  display: none;
+}
+
+.fiap-logo {
+  height: 45px;
+  width: auto;
+}
+
+/* título centrado real */
+#viewerTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1d4ed8;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
 .viewer-content {
   position: relative;
   flex: 1;
   min-height: 0;
-  padding: 66px;
+  padding: 16px;
 }
 
 #viewerFrame {
- width: 100%;
+  width: 100%;
   height: 100%;
   border: 0;
   border-radius: 16px;
@@ -226,6 +253,20 @@ body > * {
   margin-bottom: 18px;
 }
 
+/* footer */
+.footer {
+  width: 100%;
+  height: 20px;
+  background-color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: white;
+  margin-top: auto;
+}
+
+/* móvil */
 @media (max-width: 700px) {
   .hero h1 {
     font-size: 28px;
@@ -237,16 +278,14 @@ body > * {
     white-space: nowrap;
   }
 
-  /* 🔧 HEADER EN MÓVIL (orden vertical limpio) */
   .viewer-header {
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
   .viewer-right {
-    order: 1; /* logo arriba */
+    order: 1;
   }
 
   .viewer-left {
@@ -263,71 +302,14 @@ body > * {
 
   #viewerTitle {
     order: 2;
+    position: static;
+    transform: none;
     font-size: 18px;
     text-align: center;
-    position: static;   /* importante */
-    transform: none;    /* importante */
+    white-space: normal;
   }
 
-  /* tamaño del logo en móvil */
   .fiap-logo {
     height: 28px;
   }
-
-  #viewerFrame {
-    height: calc(100vh - 180px);
-  }
-}
-
-/* ocultar botón externo (si lo mantienes en HTML) */
-.hidden-link {
-  display: none;
-}
-
-/* tamaño logo escritorio */
-.fiap-logo {
-  height: 12px;
-  width: auto;
-}
-
-/* 👇 AÑADE ESTO AQUÍ (fuera del bloque) */
-.hidden-link {
-  display: none;
-}
-.fiap-logo {
-  height: 45px;
-  width: auto;
-}
-.viewer-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-#viewerTitle {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #1d4ed8;
-  text-align: center;
-  margin: 0;
-}
-
-.footer {
-  width: 100%;
-  height: 20px;
-  background-color: #1d4ed8;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 11px;
-  color: white;
-
-  margin-top: auto; /* 👈 CLAVE */
-}
-
-.viewer-content {
-  padding-bottom: 25px;
 }

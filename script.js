@@ -1,95 +1,53 @@
-const homeView = document.getElementById("homeView");
-const viewerView = document.getElementById("viewerView");
-const viewerFrame = document.getElementById("viewerFrame");
-const viewerTitle = document.getElementById("viewerTitle");
-const backButton = document.getElementById("backButton");
-const openExternalNotice = document.getElementById("openExternalNotice");
-const iframeNotice = document.getElementById("iframeNotice");
-const loadingOverlay = document.getElementById("loadingOverlay");
-const cards = document.querySelectorAll(".card");
+(function () {
+  "use strict";
 
-let iframeTimeout = null;
+  const cards = document.querySelectorAll(".card");
+  const overlay = document.getElementById("transitionOverlay");
+  const transitionTitle = document.getElementById("transitionTitle");
+  const transitionText = document.getElementById("transitionText");
 
-function isMobileDevice() {
-  return window.innerWidth <= 700;
-}
+  function buildLaunchUrl(targetUrl, title, description) {
+    const params = new URLSearchParams({
+      target: targetUrl,
+      title: title || "FIAP Collection",
+      description: description || "Opening archive..."
+    });
+    return `launch.html?${params.toString()}`;
+  }
 
-function getViewerLabel(title) {
-  if (title === "PFIAP") return "PFIAP - FIAP Portfolio and levels";
-  if (title === "MFIAP") return "MFIAP - Master FIAP";
-  if (title === "FIAP World Cup") return "FIAP World Cups for Clubs";
-  if (title === "FIAP Distinctions") return "FIAP Distinctions and levels";
-  return title;
-}
+  function showTransition(title, description) {
+    transitionTitle.textContent = title ? `Opening ${title}…` : "Opening archive…";
+    transitionText.textContent =
+      description || "Please wait while the FIAP collection is being prepared.";
 
-function resetViewer() {
-  clearTimeout(iframeTimeout);
-  viewerFrame.src = "about:blank";
-  viewerFrame.classList.remove("is-visible");
-  iframeNotice.classList.add("hidden");
-  loadingOverlay.classList.add("hidden");
-}
+    overlay.classList.remove("hidden");
+    overlay.setAttribute("aria-hidden", "false");
 
-function showHome() {
-  resetViewer();
-  viewerView.classList.remove("active");
-  homeView.classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function showDesktopViewer(title, url) {
-  homeView.classList.remove("active");
-  viewerView.classList.add("active");
-
-  viewerTitle.textContent = getViewerLabel(title);
-  openExternalNotice.href = url;
-
-  viewerFrame.classList.remove("is-visible");
-  iframeNotice.classList.add("hidden");
-  loadingOverlay.classList.remove("hidden");
-
-  // Espera un instante antes de asignar src para que el overlay pinte primero
-  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      viewerFrame.src = url;
+      overlay.classList.add("visible");
+    });
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      const href = card.getAttribute("href");
+      const title = card.dataset.title || "FIAP Collection";
+      const description = card.dataset.description || "Opening archive...";
+
+      if (!href || href === "#" || card.classList.contains("disabled")) {
+        event.preventDefault();
+        alert("This section does not have a public link yet.");
+        return;
+      }
+
+      event.preventDefault();
+      showTransition(title, description);
+
+      const launchUrl = buildLaunchUrl(href, title, description);
+
+      setTimeout(() => {
+        window.location.href = launchUrl;
+      }, 850);
     });
   });
-
-  iframeTimeout = setTimeout(() => {
-    loadingOverlay.classList.add("hidden");
-    iframeNotice.classList.remove("hidden");
-  }, 6000);
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-cards.forEach((card) => {
-  card.addEventListener("click", (event) => {
-    const title = card.dataset.title;
-    const url = card.getAttribute("href");
-
-    if (!url || url === "#") {
-      event.preventDefault();
-      alert("This section does not have a public link yet.");
-      return;
-    }
-
-    if (isMobileDevice()) {
-      event.preventDefault();
-      window.location.assign(url);
-      return;
-    }
-
-    event.preventDefault();
-    showDesktopViewer(title, url);
-  });
-});
-
-backButton.addEventListener("click", showHome);
-
-viewerFrame.addEventListener("load", () => {
-  clearTimeout(iframeTimeout);
-  iframeNotice.classList.add("hidden");
-  loadingOverlay.classList.add("hidden");
-  viewerFrame.classList.add("is-visible");
-});
+})();

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opening FIAP Collection</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="launch-body">
+  <a href="index.html" class="floating-back-btn" aria-label="Back to FIAP">
+    ← Back to FIAP
+  </a>
+
+  <main class="launch-shell">
+    <div class="launch-card">
+      <img src="FIAP_Logo.png" alt="FIAP Logo" class="launch-logo" />
+      <div class="spinner"></div>
+      <h1 id="launchTitle">Opening archive…</h1>
+      <p id="launchDescription">Please wait while the FIAP collection is being prepared.</p>
+
+      <div class="launch-actions">
+        <a id="openNowBtn" class="primary-btn" href="#">Open now</a>
+        <a href="index.html" class="secondary-btn">Back to FIAP</a>
+      </div>
+
+      <p class="launch-help">
+        If the archive does not open automatically, use <strong>Open now</strong>.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const params = new URLSearchParams(window.location.search);
+      const target = params.get("target");
+      const title = params.get("title") || "FIAP Collection";
+      const description = params.get("description") || "Opening archive…";
+
+      const launchTitle = document.getElementById("launchTitle");
+      const launchDescription = document.getElementById("launchDescription");
+      const openNowBtn = document.getElementById("openNowBtn");
+
+      launchTitle.textContent = `Opening ${title}…`;
+      launchDescription.textContent = description;
+      openNowBtn.href = target || "index.html";
+
+      if (!target) {
+        launchTitle.textContent = "Archive unavailable";
+        launchDescription.textContent = "No destination URL was provided.";
+        return;
+      }
+
+      setTimeout(() => {
+        window.location.href = target;
+      }, 1200);
+    })();
+  </script>
+</body>
+</html>
